@@ -1,24 +1,19 @@
 # Archivo base para el despliegue del Agente en Streamlitimport streamlit as st
+import streamlit as st
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
 st.title("Configuración inicial")
 st.write("Primera prueba de uso de Streamlit y ambiente de MA2026")
 
-# Slider para seleccionar gasto
 gasto = st.slider("Seleccione nivel de gasto en publicidad", 10, 200, 50)
 
-# Datos de entrenamiento
 variable_x = np.array([[10], [20], [30], [40], [50]])
 variable_y = np.array([15, 25, 35, 45, 55])
 
-# Modelo
 modelo_lr = LinearRegression()
 modelo_lr.fit(variable_x, variable_y)
 
-# Botón para predecir
 if st.button("Predecir"):
     resultado = modelo_lr.predict([[gasto]])
     st.success(f"Las ventas proyectadas para una inversión de ${gasto} son: ${resultado[0]}")
-
-
